@@ -1,5 +1,7 @@
 const imageUpload = document.getElementById('imageUpload')
-
+var config = {
+    headers: {'Access-Control-Allow-Origin': '*'}
+};
 Promise.all([
   faceapi.nets.faceRecognitionNet.loadFromUri('/Face-Recognition-JavaScript-master/models'),
   faceapi.nets.faceLandmark68Net.loadFromUri('/Face-Recognition-JavaScript-master/models'),
@@ -41,7 +43,7 @@ function loadLabeledImages() {
     labels.map(async label => {
       const descriptions = []
       for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`https://github.com/saiyedulbas/gitimages/tree/main/labeled_images/${label}/${i}.jpg`)
+        const img = await faceapi.fetchImage(`https://github.com/saiyedulbas/gitimages/blob/main/labeled_images/${label}/${i}.jpg`)
         const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
         descriptions.push(detections.descriptor)
       }
