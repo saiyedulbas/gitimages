@@ -1,11 +1,12 @@
-const imageUpload = document.getElementById('imageUpload')
 var config = {
     headers: {'Access-Control-Allow-Origin': '*'}
 };
+const imageUpload = document.getElementById('imageUpload')
+
 Promise.all([
-  faceapi.nets.faceRecognitionNet.loadFromUri('/Face-Recognition-JavaScript-master/models'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('/Face-Recognition-JavaScript-master/models'),
-  faceapi.nets.ssdMobilenetv1.loadFromUri('/Face-Recognition-JavaScript-master/models')
+  faceapi.nets.faceRecognitionNet.loadFromUri('/gitimages/models'),
+  faceapi.nets.faceLandmark68Net.loadFromUri('/gitimages/models'),
+  faceapi.nets.ssdMobilenetv1.loadFromUri('/gitimages/models')
 ]).then(start)
 
 async function start() {
